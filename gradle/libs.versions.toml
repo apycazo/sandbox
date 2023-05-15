@@ -1,0 +1,231 @@
+# ==============================================================================
+[metadata]
+format.version = "1.1"
+# ==============================================================================
+[versions]
+# ==============================================================================
+# Bill-Of-Materials
+bom-apache-groovy = { require = "[4.0,5.0)" }
+bom-jackson       = { require = "[2.13.4,3.0)" }
+bom-jetty         = { require = "[10,11)" }
+bom-jersey        = { require = "[2.35,3)" }
+bom-log4j         = { require = "[2.17.2,3)" }
+bom-resilience4j  = { require = "[1.7.0,2)" }
+bom-spring        = { require = "[5.3.18,7)" }
+# Library versions
+aws                 = { require = "[1,2)" }
+aspectjweaver       = { require = "[1,2)" }
+assertj             = { require = "[3,4)" }
+awaitility          = { require = "[4,5)" }
+bouncycastle        = { require = "[1,2)" }
+commons-dbcp2       = { require = "[2,3)" }
+commons-codec       = { require = "[1,2)" }
+commons-config      = { require = "[1,2)" }
+commons-compress    = { require = "[1.21,2)" }
+commons-collections = { require = "[3.2.2,4)" }
+commons-lang        = { require = "[2,3)" }
+commons-lang3       = { require = "[3,4)" }
+commons-validator   = { require = "[1,2)" }
+cucumber            = { require = "[5,6)" }
+feign               = { require = "[10,12)" }
+feign-form          = { require = "[3,4)" }
+greenmail           = { require = "[1,2)" }
+h2                  = { require = "[2,3)" }
+hibernate-old       = { require = "[5.6.5.Final,6)" }
+hibernate-new       = { require = "[6,7)" }
+jackson-kotlin      = { require = "[2.13.3,3)" }
+janino              = { require = "[3,4)" }
+jasypt              = { require = "[1.9.3,2)" }
+javax-annotation    = { require = "[1,2)" }
+javax-jaxb          = { require = "[2,3)" }
+javax-servlet       = { require = "[4,5)" }
+javax-validation    = { require = "[2,3)" }
+javax-wsrs          = { require = "[2,3)" }
+jodatime            = { require = "[2,3)" }
+jsonwebtoken        = { require = "[0.9,2)" }
+jupiter             = { require = "[5,6)" }
+junit-platform      = { require = "[1,2)" }
+logback             = { require = "[1.2.9,2)" }
+micrometer          = { require = "[1,2)" }
+mockito             = { require = "[3,5)" }
+mockwebserver       = { require = "[4,5)" }
+mysql-java          = { require = "[8.0.28,9)" }
+rest-assured        = { require = "[5,6)" }
+slf4j               = { require = "[1.7.26, 3]" }
+snakeyaml           = { require = "[1.33,3)" }
+spring-amqp         = { require = "[2,3)" }
+spring-data-core    = { require = "[1,2)" }
+spring-data-jpa     = { require = "[2,3)" }
+spring-rabbit       = { require = "[2,3)" }
+spring-retry        = { require = "[1,2)" }
+syslog-logback      = { require = "[1,2)" }
+system-stubs        = { require = "[2,3)" }
+test-containers     = { require = "[1,2)" }
+tomcat              = { require = "[9,10)" }
+# Plugins
+asciidoctor = { require = "[1.5.9.2,2)" }
+lombok      = { require = "[6.1.0,)" }
+sonarqube   = { require = "[3.3,4)" }
+swagger     = { require = "[2.18.2,3)" }
+jib         = { require = "[3,4)" }
+# ==============================================================================
+[libraries]
+# ==============================================================================
+# Aspect helpers
+aspectjweaver = { module = "org.aspectj:aspectjweaver", version.ref = "aspectjweaver" }
+# Assertions for testing
+assertj-core  = { module = "org.assertj:assertj-core", version.ref = "assertj" }
+# Features to wait on conditions, mainly for testing
+awaitility    = { module = "org.awaitility:awaitility", version.ref = "awaitility" }
+# Amazon SDK
+aws-java-sdk-core = { module = "com.amazonaws:aws-java-sdk-core", version.ref = "aws" }
+aws-java-sdk-ec2  = { module = "com.amazonaws:aws-java-sdk-ec2", version.ref = "aws" }
+aws-java-sdk-s3   = { module = "com.amazonaws:aws-java-sdk-s3", version.ref = "aws" }
+aws-java-sdk-ses  = { module = "com.amazonaws:aws-java-sdk-ses", version.ref = "aws" }
+# BOM dependencies, several libraries share their versions, required to use gradle methods
+bom-apache-groovy = { module = "org.apache.groovy:groovy-bom", version.ref = "bom-apache-groovy" }
+bom-jackson       = { module = "com.fasterxml.jackson:jackson-bom", version.ref = "bom-jackson" }
+bom-jersey        = { module = "org.glassfish.jersey:jersey-bom", version.ref = "bom-jersey" }
+bom-jetty         = { module = "org.eclipse.jetty:jetty-bom", version.ref = "bom-jetty" }
+bom-junit         = { module = "org.junit:junit-bom", version.ref = "jupiter" }
+bom-log4j         = { module = "org.apache.logging.log4j:log4j-bom", version.ref = "bom-log4j" }
+bom-spring        = { module = "org.springframework:spring-framework-bom", version.ref = "bom-spring" }
+bom-resilience4j  = { module = "io.github.resilience4j:resilience4j-bom", version.ref = "bom-resilience4j" }
+# Security & cyphering
+bcpkix-jdk15on    = { module = "org.bouncycastle:bcpkix-jdk15on", version.ref = "bouncycastle" }
+# Apache commons modules
+commons-codec       = { module = "commons-codec:commons-codec", version.ref = "commons-codec" }
+commons-config      = { module = "commons-configuration:commons-configuration", version.ref = "commons-config" }
+commons-collections = { module = "commons-collections:commons-collections", version.ref = "commons-collections" }
+commons-compress    = { module = "org.apache.commons:commons-compress", version.ref = "commons-compress" }
+commons-dbcp2       = { module = "org.apache.commons:commons-dbcp2", version.ref = "commons-dbcp2" }
+commons-lang        = { module = "commons-lang:commons-lang", version.ref = "commons-lang" }
+commons-lang3       = { module = "org.apache.commons:commons-lang3", version.ref = "commons-lang3" }
+commons-validator   = { module = "commons-validator:commons-validator", version.ref = "commons-validator" }
+# Behavior testing with Gerkhin language
+cucumber-java   = { module = "io.cucumber:cucumber-java", version.ref = "cucumber" }
+cucumber-junit  = { module = "io.cucumber:cucumber-junit", version.ref = "cucumber" }
+cucumber-jvm    = { module = "io.cucumber:cucumber-jvm", version.ref = "cucumber" }
+cucumber-spring = { module = "io.cucumber:cucumber-spring", version.ref = "cucumber" }
+# HTTP client factory
+feign-core        = { module = "io.github.openfeign:feign-core", version.ref = "feign" }
+feign-form        = { module = "io.github.openfeign.form:feign-form", version.ref = "feign-form" }
+feign-form-spring = { module = "io.github.openfeign.form:feign-form-spring", version.ref = "feign-form" }
+feign-hystrix     = { module = "io.github.openfeign:feign-hystrix", version.ref = "feign" }
+feign-jackson     = { module = "io.github.openfeign:feign-jackson", version.ref = "feign" }
+feign-okhttp      = { module = "io.github.openfeign:feign-okhttp", version.ref = "feign" }
+feign-slf4j       = { module = "io.github.openfeign:feign-slf4j", version.ref = "feign" }
+# Mail testing
+greenmail         = { module = "com.icegreen:greenmail", version.ref = "greenmail" }
+greenmail-junit5  = { module = "com.icegreen:greenmail-junit5", version.ref = "greenmail" }
+# Entity-DTO mapper
+hibernate-core            = { module = "org.hibernate:hibernate-core", version.ref = "hibernate-old" }
+hibernate-orm-core        = { module = "org.hibernate.orm:hibernate-core", version.ref = "hibernate-new" }
+hibernate-jpamodelgen     = { module = "org.hibernate:hibernate-jpamodelgen", version.ref = "hibernate-old" }
+hibernate-jpamodelgen-orm = { module = "org.hibernate.orm:hibernate-jpamodelgen", version.ref = "hibernate-new" }
+hibernate-validator       = { module = "org.hibernate.validator:hibernate-validator", version.ref = "hibernate-new" }
+# In-memory capable database
+h2 = { module = "com.h2database:h2", version.ref = "h2" }
+# Serialization for json, yaml, etc
+jackson-databind        = { module = "com.fasterxml.jackson.core:jackson-databind", version.ref = "bom-jackson" }
+jackson-datatype-jsr310 = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310", version.ref = "bom-jackson" }
+jackson-dataformat-yaml = { module = "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml", version.ref = "bom-jackson" }
+jackson-module-kotlin   = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson-kotlin" }
+# Extras for logback conditional values
+janino = { module = "org.codehaus.janino:janino", version.ref = "janino" }
+# Cyphering methods
+jasypt-spring4 = { module = "org.jasypt:jasypt-spring4", version.ref = "jasypt" }
+# Java extensions
+javax-annotation-api  = { module = "javax.annotation:javax.annotation-api", version.ref = "javax-annotation" }
+javax-jaxb-api        = { module = "javax.xml.bind:jaxb-api", version.ref = "javax-jaxb" }
+javax-servlet-api     = { module = "javax.servlet:javax.servlet-api", version.ref = "javax-servlet" }
+javax-validation-api  = { module = "javax.validation:validation-api", version.ref = "javax-validation" }
+javax-wsrs-api        = { group = "javax.ws.rs", name = "javax.ws.rs-api", version.ref = "javax-wsrs" }
+# Jersey Jax-RS implementation
+jersey-container-servlet  = { module = "org.glassfish.jersey.containers:jersey-container-servlet", version.ref = "bom-jersey" }
+jersey-media-jackson      = { module = "org.glassfish.jersey.media:jersey-media-json-jackson", version.ref = "bom-jersey" }
+jersey-spring5            = { module = "org.glassfish.jersey.ext:jersey-spring5", version.ref = "bom-jersey" }
+jersey-bean-validation    = { module = "org.glassfish.jersey.ext:jersey-bean-validation", version.ref = "bom-jersey" }
+# Jetty embedded server
+jetty-annotations = { module = "org.eclipse.jetty:jetty-annotations", version.ref = "bom-jetty" }
+jetty-rewrite     = { module = "org.eclipse.jetty:jetty-rewrite", version.ref = "bom-jetty" }
+jetty-server      = { module = "org.eclipse.jetty:jetty-server", version.ref = "bom-jetty" }
+jetty-servlet     = { module = "org.eclipse.jetty:jetty-servlet", version.ref = "bom-jetty" }
+# Time & date library
+joda-time = { module = "joda-time:joda-time", version.ref = "jodatime" }
+# Web token implementation (jjwt-api replaces jjwt)
+jsonwebtoken-base = { module = "io.jsonwebtoken:jjwt", version.ref = "jsonwebtoken" }
+jsonwebtoken-api  = { module = "io.jsonwebtoken:jjwt-api", version.ref = "jsonwebtoken" }
+# Unit testing
+junit-jupiter           = { module = "org.junit.jupiter:junit-jupiter", version.ref = "jupiter" }
+junit-jupiter-api       = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "jupiter" }
+junit-jupiter-engine    = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "jupiter" }
+junit-jupiter-params    = { module = "org.junit.jupiter:junit-jupiter-params", version.ref = "jupiter" }
+junit-platform-launcher = { module = "org.junit.platform:junit-platform-launcher", version.ref = "junit-platform" }
+junit-platform-engine   = { module = "org.junit.platform:junit-platform-engine", version.ref = "junit-platform" }
+junit-platform-runner   = { module = "org.junit.platform:junit-platform-runner", version.ref = "junit-platform" }
+junit-vintage-engine    = { module = "org.junit.vintage:junit-vintage-engine", version.ref = "jupiter" }
+# Logging framework
+logback-classic   = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+logback-core      = { module = "ch.qos.logback:logback-core", version.ref = "logback" }
+logback-syslog4j  = { module = "com.papertrailapp:logback-syslog4j", version.ref = "syslog-logback" }
+# Montoring & prometheus format
+micrometer-registry-prometheus = { module = "io.micrometer:micrometer-registry-prometheus", version.ref = "micrometer" }
+# Mocked HTTP server
+mockwebserver = { module = "com.squareup.okhttp3:mockwebserver", version.ref = "mockwebserver" }
+# Testing with mocks
+mockito-core          = { module = "org.mockito:mockito-core", version.ref = "mockito" }
+mockito-junit-jupiter = { module = "org.mockito:mockito-junit-jupiter", version.ref = "mockito" }
+# Database connection
+mysql-connector-java = { module = "mysql:mysql-connector-java", version.ref = "mysql-java" }
+# HTTP request testing
+rest-assured                = { module = "io.rest-assured:rest-assured", version.ref = "rest-assured" }
+rest-assured-json-validator = { module = "io.rest-assured:json-schema-validator", version.ref = "rest-assured" }
+# Common logging API
+slf4j-api = { module = "org.slf4j:slf4j-api", version.ref = "slf4j" }
+# Yaml de/serializer
+snakeyaml = { module = "org.yaml:snakeyaml", version.ref = "snakeyaml" }
+# Log4j2
+log4j-core = { module = "org.apache.logging.log4j:log4j-core", version.ref = "bom-log4j" }
+log4j-jcl = { module = "org.apache.logging.log4j:log4j-jcl", version.ref = "bom-log4j" }
+log4j-slf4j2 = { module = "org.apache.logging.log4j:log4j-slf4j-impl", version.ref = "bom-log4j" }
+# Spring framework & modules
+spring-amqp               = { module = "org.springframework.amqp:spring-amqp", version.ref = "spring-amqp" }
+spring-beans              = { module = "org.springframework:spring-beans", version.ref = "bom-spring" }
+spring-context            = { module = "org.springframework:spring-context", version.ref = "bom-spring" }
+spring-context-support    = { module = "org.springframework:spring-context-support", version.ref = "bom-spring" }
+spring-core               = { module = "org.springframework:spring-core", version.ref = "bom-spring" }
+spring-data-commons-core  = { module = "org.springframework.data:spring-data-commons-core", version.ref = "spring-data-core" }
+spring-data-jpa           = { module = "org.springframework.data:spring-data-jpa", version.ref = "spring-data-jpa" }
+spring-orm                = { module = "org.springframework:spring-orm", version.ref = "bom-spring" }
+spring-rabbit             = { module = "org.springframework.amqp:spring-rabbit", version.ref = "spring-rabbit" }
+spring-retry              = { module = "org.springframework.retry:spring-retry", version.ref = "spring-retry" }
+spring-test               = { module = "org.springframework:spring-test", version.ref = "bom-spring" }
+spring-tx                 = { module = "org.springframework:spring-tx", version.ref = "bom-spring" }
+spring-web                = { module = "org.springframework:spring-web", version.ref = "bom-spring" }
+spring-websocket          = { module = "org.springframework:spring-websocket", version.ref = "bom-spring" }
+# Testing libraries to work with system & environment variables
+system-stubs-core     = { module = "uk.org.webcompere:system-stubs-core", version.ref = "system-stubs" }
+system-stubs-jupiter  = { module = "uk.org.webcompere:system-stubs-jupiter", version.ref = "system-stubs" }
+# Docker container test support
+testcontainers-junit-jupiter  = { module = "org.testcontainers:junit-jupiter", version.ref = "test-containers" }
+testcontainers-mysql          = { module = "org.testcontainers:mysql", version.ref = "test-containers" }
+testcontainers-testcontainers = { module = "org.testcontainers:testcontainers", version.ref = "test-containers" }
+# Database connection pool implementation
+tomcat-dbcp = { module = "org.apache.tomcat:tomcat-dbcp", version.ref = "tomcat" }
+# ==============================================================================
+[bundles]
+logging-logback = ["slf4j-api", "logback-classic"]
+logging-log4j   = ["slf4j-api", "log4j-core", "log4j-jcl", "log4j-slf4j2"]
+test-basic      = ["junit-jupiter", "assertj-core"]
+test-rest       = ["junit-jupiter", "assertj-core", "rest-assured-json-validator", "rest-assured"]
+serializers     = ["snakeyaml", "jackson-databind"]
+spring-basic    = ["spring-context", "spring-core"]
+# ==============================================================================
+[plugins]
+# ==============================================================================
+asciidoctor   = { id = "org.asciidoctor.convert", version.ref = "asciidoctor" }
+lombok        = { id = "io.freefair.lombok", version.ref = "lombok" }
+sonarqube     = { id = "org.sonarqube", version.ref = "sonarqube" }
+swagger       = { id = "org.hidetake.swagger.generator", version.ref = "swagger" }
+jib           = { id = "com.google.cloud.tools.jib", version.ref = "jib" }

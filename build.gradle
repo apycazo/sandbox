@@ -1,0 +1,111 @@
+plugins {
+  id 'java'
+  id 'application'
+  id 'maven-publish'
+  alias(libs.plugins.lombok)
+  alias(libs.plugins.jib)
+}
+
+group = 'sandbox'
+version = '1.0.0-SNAPSHOT'
+mainClassName = "sandbox.Main"
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  implementation libs.bundles.logging.logback
+  testImplementation libs.bundles.test.basic
+}
+
+dependencyLocking {
+  lockAllConfigurations()
+}
+
+test {
+  useJUnitPlatform()
+  testLogging {
+    events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+  }
+}
+
+java {
+  toolchain {
+    languageVersion = JavaLanguageVersion.of(17)
+  }
+  consistentResolution {
+    useCompileClasspathVersions()
+  }
+}
+
+application {
+  mainClassName = project.mainClassName
+  applicationDefaultJvmArgs = []
+}
+
+distZip {
+  enabled = false
+}
+distTar {
+  compression = Compression.GZIP
+  // archiveFileName = "sandbox.tgz"
+}
+
+jar {
+  manifest {
+    attributes(
+      "Main-Class": "${project.mainClassName}",
+      "Build-Date": "${new Date().format("yyyy-MM-dd hh:mm:ss")}",
+      "Implementation-Version": "${project.version}"
+    )
+  }
+}
+
+publishing {
+  publications {
+    mavenJava(MavenPublication) {
+      from components.java
+    }
+  }
+}
+
+jib {
+  from {
+    image 'public.ecr.aws/amazoncorretto/amazoncorretto:17.0.7-al2023-headless'
+  }
+  container {
+    mainClass = "${project.mainClassName}"
+    appRoot = "/app"
+    workingDirectory = "/app"
+    jvmFlags = []
+    ports = ["8080"]
+    format = "OCI"
+    user = 2000 // shows as ?, user does not really need to exist
+  }
+}
+
+configurations.configureEach {
+  // --- excludes are defined here as:
+  // exclude group:"my.group.to.exclude", module: "module-to-exclude
+  resolutionStrategy {
+    // --- modify the cache values here
+    // cacheChangingModulesFor 0, 'seconds'
+    // --- reject snapshots
+    componentSelection.all {
+      if (candidate.version.endsWith("-SNAPSHOT")) {
+        reject "Snapshot version not allowed for $candidate"
+      }
+    }
+    // --- custom config dependencies
+    eachDependency { DependencyResolveDetails details ->
+      String dependencyFullName = details.requested.module.toString()
+      String dependencyGroup = details.requested.module.group
+      String dependencyModule = details.requested.module.name
+      if (dependencyFullName == "module-to-set") {
+        details.useVersion = "custom-version"
+        details.because = "why this version is resolved"
+      }
+    }
+  }
+}
