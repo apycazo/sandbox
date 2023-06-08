@@ -15,7 +15,6 @@ repositories {
 }
 
 dependencies {
-  // implementation libs.bundles.logging.logback
   testImplementation libs.bundles.test.basic
 }
 

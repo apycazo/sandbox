@@ -54,6 +54,7 @@ rest-assured        = { require = "[5,6)" }
 slf4j               = { require = "[1.7.26, 3]" }
 snakeyaml           = { require = "[1.33,3)" }
 spring-amqp         = { require = "[2,3)" }
+spring-boot         = { require = "[3,4)" }
 spring-data-core    = { require = "[1,2)" }
 spring-data-jpa     = { require = "[2,3)" }
 spring-rabbit       = { require = "[2,3)" }
@@ -204,6 +205,9 @@ spring-test               = { module = "org.springframework:spring-test", versio
 spring-tx                 = { module = "org.springframework:spring-tx", version.ref = "bom-spring" }
 spring-web                = { module = "org.springframework:spring-web", version.ref = "bom-spring" }
 spring-websocket          = { module = "org.springframework:spring-websocket", version.ref = "bom-spring" }
+# Spring boot modules
+spring-boot-starter-web   = { module = "org.springframework.boot:spring-boot-starter-web", version.ref = "spring-boot" }
+spring-boot-starter-data  = { module = "org.springframework.boot:spring-boot-starter-data-jpa", version.ref = "spring-boot" }
 # Testing libraries to work with system & environment variables
 system-stubs-core     = { module = "uk.org.webcompere:system-stubs-core", version.ref = "system-stubs" }
 system-stubs-jupiter  = { module = "uk.org.webcompere:system-stubs-jupiter", version.ref = "system-stubs" }
